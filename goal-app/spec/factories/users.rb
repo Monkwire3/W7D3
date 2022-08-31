@@ -12,5 +12,11 @@ FactoryBot.define do
   factory :user do
     username { Faker::Games::SuperSmashBros.fighter }
     password { 'password' }
+
+    factory :user1 do
+      username { 'user1' }
+      password { '123456'}
+    end
   end
+
 end
