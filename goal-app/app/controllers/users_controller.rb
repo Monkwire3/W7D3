@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user.save!
       redirect_to user_url(@user.id)
     else
-      flash.now[:errors] = ["Failed to create user"]
+      flash.now[:errors] = @user.errors.full_messages
       render :new
     end
   end
@@ -22,6 +22,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     render :show
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy if @user
   end
 
   private
