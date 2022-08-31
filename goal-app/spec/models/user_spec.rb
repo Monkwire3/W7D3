@@ -11,5 +11,18 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:valid_user) {
+    User.new(username: 'user1',
+    password: 'password')
+  }
+
+  before :each do
+    create(:user)
+  end
+
+  it { should validate_presence_of(:username) }
+  it { should validate_uniqueness_of(:username) }
+  it { should validate_presence_of(:password) }
+
+  
 end
